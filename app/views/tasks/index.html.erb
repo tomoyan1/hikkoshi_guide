@@ -2,10 +2,29 @@
 
 
 <% if user_signed_in? %>
-  <%= link_to 'タスク作成', new_task_path %>
-  <%= link_to current_user.name, edit_user_registration_path %>
+   <br>  
+  <%= link_to current_user.name, edit_user_registration_path %> <br>  
   <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to '新規登録', new_user_registration_path %>
   <%= link_to 'ログイン', new_user_session_path %>
 <% end %>
+
+<% if user_signed_in? %>
+  退去日：<%= current_user.move_out_date %><br>
+  退去まであと：<%= (current_user.move_out_date - Date.current).to_i %>日 <br>  
+  郵便番号：<%= current_user.old_zipcode %><br>
+  住所：<%= current_user.old_address %> <br>
+  
+  <%= link_to '旧居のタスクを追加', new_task_path(task_type: :move_out) %>  <br> <br> 
+
+  入居日：<%= current_user.move_in_date %> <br>
+  入居まであと：<%= (current_user.move_in_date - Date.current).to_i %>日 <br>
+  郵便番号：<%= current_user.new_zipcode %><br>
+  住所：<%= current_user.new_address %><br>
+  
+  <%= link_to '新居のタスクを追加', new_task_path(task_type: :move_in) %>
+
+<% end %>
+
+

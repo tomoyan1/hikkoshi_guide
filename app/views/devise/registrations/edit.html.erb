@@ -9,8 +9,17 @@
   </div>
 
   <div class="field">
+    <p><%= f.label :old_zipcode, "旧居の郵便番号(退去する家)" %></p>
+    <p><%= f.text_field :old_zipcode, placeholder: "例: 123-4567" %></p>
+
+  <div class="field">
     <p><%= f.label :old_address, "旧居の住所（退去する家）" %></p>
     <p><%= f.text_field :old_address %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :new_zipcode, "新居の郵便番号（入居する家）" %></p>
+    <p><%= f.text_field :new_zipcode, placeholder: "例: 123-4567" %></p>
   </div>
 
   <div class="field">
@@ -28,9 +37,17 @@
     <p><%= f.date_field :move_in_date %></p>
   </div>
 
-  <div class="actions">
+
+
+  <div class="field">
+    <p><%= f.label :current_password, "現在のパスワード（変更を保存するには入力が必要です）" %></p>
+    <p><%= f.password_field :current_password, autocomplete: "current-password" %></p>
+  </div>
+
+    <div class="actions">
     <%= f.submit "Update" %>
   </div>
+
 <% end %>
 
 <h3>アカウントを削除</h3>
