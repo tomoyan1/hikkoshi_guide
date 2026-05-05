@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HikkoshiGuide</title>
+    <title>引越しガイド</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,23 @@
   </head>
 
   <body>
+    <header class = "top-header">
+      <nav class="top-nav">
+        <% if user_signed_in? %>
+        <div class="buttons">
+        <%= link_to current_user.name, edit_user_registration_path, class: "user_edit-button"%> 
+  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign_out-button"  %>
+<% else %>
+  <%= link_to '新規登録', new_user_registration_path, class: "sign_up-button" %>
+  <%= link_to 'ログイン', new_user_session_path, class: "sign_in-button"%><br>
+  <% flash.each do |message_type, message| %>
+   <div class = "flash-message <%= message_type%>" >
+    <%= message%>
+  </div>
+  <% end %>
+<% end %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

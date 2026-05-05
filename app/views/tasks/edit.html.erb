@@ -1,15 +1,4 @@
-
-<h2>
-  <% if @task.task_type == 0 %>
-    旧居（退去）のタスクを追加
-  <% elsif @task.task_type == 1 %>
-    新居（入居）のタスクを追加
-  <% else %>
-    タスクを追加
-  <% end %>
-</h2>
-
-  <%= form_with(model: @task, local: true) do |f| %>
+ <%= form_with(model: @task, local: true) do |f| %>
     
     <%= f.hidden_field :task_type %>
   <div class = "form-list">
@@ -27,7 +16,7 @@
     <div class="field">
       <%= f.label :image, "写真を登録" %> 
       <%= f.file_field :image %>
-  <%= f.submit "作成" %>
+  <%= f.submit "変更" %>
 <% end %>
 </div>
 
