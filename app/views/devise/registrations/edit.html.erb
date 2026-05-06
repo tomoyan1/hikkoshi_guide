@@ -1,40 +1,61 @@
-<h2>プロフィール編集</h2>
+<div class="auth-container">
+  <div class="auth-card">
+<div class="auth-title"><h2>新規登録</h2></div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="devise-field">
     <p><%= f.label :名前 %></p>
-    <p><%= f.text_field :name %></p>
+    <p><%= f.text_field :name,class: "devise-input" %></p>
   </div>
 
-  <div class="field">
+  <div class="devise-field">
+    <p><%= f.label :old_zipcode, "旧居の郵便番号(退去する家)" %></p>
+    <p><%= f.text_field :old_zipcode,class: "devise-input", placeholder: "例: 123-4567" %></p>
+
+  <div class="devise-field">
     <p><%= f.label :old_address, "旧居の住所（退去する家）" %></p>
-    <p><%= f.text_field :old_address %></p>
+    <p><%= f.text_field :old_address,class: "devise-input" %></p>
   </div>
 
-  <div class="field">
+  <div class="devise-field">
+    <p><%= f.label :new_zipcode, "新居の郵便番号（入居する家）" %></p>
+    <p><%= f.text_field :new_zipcode, class: "devise-input",placeholder: "例: 123-4567" %></p>
+  </div>
+
+  <div class="devise-field">
     <p><%= f.label :new_address, "新居の住所（入居する家）" %></p>
-    <p><%= f.text_field :new_address %></p>
+    <p><%= f.text_field :new_address,class: "devise-input" %></p>
   </div>
 
-  <div class="field">
+  <div class="devise-field">
     <p><%= f.label :move_out_date, "退去予定日" %></p>
-    <p><%= f.date_field :move_out_date %></p>
+    <p><%= f.date_field :move_out_date,class: "devise-input" %></p>
   </div>
 
-  <div class="field">
+  <div class="devise-field">
     <p><%= f.label :move_in_date, "入居予定日" %></p>
-    <p><%= f.date_field :move_in_date %></p>
+    <p><%= f.date_field :move_in_date,class: "devise-input" %></p>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+
+
+  <div class="devise-field">
+    <p><%= f.label :current_password, "現在のパスワード" %></p>
+    <p><%= f.password_field :current_password, autocomplete: "current-password",class: "devise-input",placeholder: "変更を保存するにはパスワードを入力してください" %></p>
   </div>
+
+    <div class="actions">
+    <%= f.submit "プロフィールを更新する",class: "devise-submit"  %>
+  </div>
+
 <% end %>
 
 <h3>アカウントを削除</h3>
 
 <div><%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "戻る", :back %>
+ </div> 
+ </div>

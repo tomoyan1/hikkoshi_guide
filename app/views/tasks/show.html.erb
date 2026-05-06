@@ -1,0 +1,20 @@
+
+<div class="task-detail">
+ <div class="task-name"><%= @task.name %></div>
+ <div class="task-info">
+ <p><strong>期限:</strong><%= @task.due_date %>
+ <% if @task.image.attached? %>
+ <div class="task-image">
+ <%= image_tag @task.image.variant(resize_to_limit: [500, 500]) %>
+ </div>
+ <% end %>
+ <p><strong>メモ:</strong><%= @task.task_address %>
+ </div>
+
+</div>
+
+<div class="task-action">
+<%= link_to '編集',edit_task_path(@task.id),class: 'btn-edit' %>
+<%= link_to '削除', task_path(@task.id), data: {turbo_method: :delete } %>
+<%= link_to '戻る', tasks_path, class: 'btn-back' %>
+</div>
