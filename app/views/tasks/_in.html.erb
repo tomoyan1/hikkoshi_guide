@@ -2,7 +2,7 @@
   <% @tasks.each do |task| %>
     <% if task.task_type == 1 && task.status_id != 3 %> <%# 新居のタスク %>
     
-      <div class="task-card">
+      <div class="task-card <%= task.category.class_name || 'category-none' %>">
         <div class="task-card__name">
           <h3><%= task.name %></h3>
         </div>

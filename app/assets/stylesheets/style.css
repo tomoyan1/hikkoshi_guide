@@ -105,6 +105,26 @@
   color: black;
 }
 
+.category-admin{
+  background-color: azure;
+}
+
+.category-life{
+  background-color: #d4edda;
+}
+
+.category-net{
+  background-color: #d4eced;
+}
+
+.category-contract{
+  background-color: #edd4e9;
+}
+
+.category-living{
+  background-color: #edd4db;
+}
+
 
 
 /* Task.show.html */
