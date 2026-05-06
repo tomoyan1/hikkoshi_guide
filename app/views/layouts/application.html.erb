@@ -13,6 +13,8 @@
   <body>
     <header class = "top-header">
       <nav class="top-nav">
+        <div class="logo">
+          <%= link_to "ホーム", root_path %>
         <% if user_signed_in? %>
         <div class="buttons">
         <%= link_to current_user.name, edit_user_registration_path, class: "user_edit-button"%> 
@@ -20,14 +22,15 @@
 <% else %>
   <%= link_to '新規登録', new_user_registration_path, class: "sign_up-button" %>
   <%= link_to 'ログイン', new_user_session_path, class: "sign_in-button"%><br>
-  <% flash.each do |message_type, message| %>
+<% end %>
+ <% flash.each do |message_type, message| %>
    <div class = "flash-message <%= message_type%>" >
-    <%= message%>
+    最新の通知：<%= message%>
   </div>
   <% end %>
-<% end %>
       </nav>
     </header>
+    
     <%= yield %>
   </body>
 </html>

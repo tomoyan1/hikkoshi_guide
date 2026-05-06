@@ -1,58 +1,69 @@
-<div class="field">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <p><%= f.label :メールアドレス %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
-  </div>
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-title"><h2>新規登録</h2></div>
 
-  <div class="field">
-    <p><%= f.label :パスワード%></p>
-    <% if @minimum_password_length %>
-      <p><em>(<%= @minimum_password_length %>文字以上)</em></p>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="devise-field">
+        <p><%= f.label :email, "メールアドレス" %></p>
+        <p><%= f.email_field :email, class: "devise-input", autofocus: true, autocomplete: "email" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :password, "パスワード" %></p>
+        <% if @minimum_password_length %>
+          <p><em>(<%= @minimum_password_length %>文字以上)</em></p>
+        <% end %>
+        <p><%= f.password_field :password, class: "devise-input", autocomplete: "new-password" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :password_confirmation, "パスワード（確認用）" %></p>
+        <p><%= f.password_field :password_confirmation, class: "devise-input", autocomplete: "new-password" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :name, "名前" %></p>
+        <p><%= f.text_field :name, class: "devise-input" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :old_zipcode, "旧居の郵便番号(退去する家)" %></p>
+        <p><%= f.text_field :old_zipcode, class: "devise-input", placeholder: "例: 123-4567" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :old_address, "旧居の住所(退去する家)" %></p>
+        <p><%= f.text_field :old_address, class: "devise-input" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :new_zipcode, "新居の郵便番号（入居する家）" %></p>
+        <p><%= f.text_field :new_zipcode, class: "devise-input", placeholder: "例: 123-4567" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :new_address, "新居の住所（入居する家）" %></p>
+        <p><%= f.text_field :new_address, class: "devise-input" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :move_out_date, "退去予定日" %></p>
+        <p><%= f.date_field :move_out_date, class: "devise-input" %></p>
+      </div>
+
+      <div class="devise-field">
+        <p><%= f.label :move_in_date, "入居予定日" %></p>
+        <p><%= f.date_field :move_in_date, class: "devise-input" %></p>
+      </div>
+
+      <div class="devise-actions">
+        <%= f.submit "新規登録", class: "devise-submit" %>
+      </div>
     <% end %>
-    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
-  </div>
 
-  <div class="field">
-    <p><%= f.label :パスワード（確認用） %></p>
-    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :名前 %></p>
-    <p><%= f.text_field :name %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :old_zipcode, "旧居の郵便番号(退去する家)" %></p>
-    <p><%= f.text_field :old_zipcode, placeholder: "例: 123-4567" %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :old_address, "旧居の住所(退去する家)" %></p>
-    <p><%= f.text_field :old_address %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :new_zipcode, "新居の郵便番号（入居する家）" %></p>
-    <p><%= f.text_field :new_zipcode, placeholder: "例: 123-4567" %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :new_address, "新居の住所（入居する家）" %></p>
-    <p><%= f.text_field :new_address %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :move_out_date, "退去予定日" %></p>
-    <p><%= f.date_field :move_out_date %></p>
-  </div>
-
-  <div class="field">
-    <p><%= f.label :move_in_date, "入居予定日" %></p>
-    <p><%= f.date_field :move_in_date %></p>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end%>
+    <%= render "devise/shared/links" %>
+  </div> <%# auth-card  %>
+</div>

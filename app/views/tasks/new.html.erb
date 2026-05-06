@@ -17,6 +17,10 @@
     <%= f.text_field :name, placeholder: "区役所に転居届を提出する", required: true %>
   </div>
   <div class = "form-list">
+    <%= f.label :category_id, "カテゴリ" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+  </div>
+  <div class = "form-list">
     <%= f.label :due_date, "期限(予定日)" %>
     <%= f.date_field :due_date %>
   </div>
@@ -27,6 +31,10 @@
     <div class="field">
       <%= f.label :image, "写真を登録" %> 
       <%= f.file_field :image %>
+       <div class="tasks-field">
+       <%= f.label :status, "状態" %> 
+      <%= f.collection_select(:status_id,Status.all, :id, :name)  %>
+    </div>
   <%= f.submit "作成" %>
 <% end %>
 </div>

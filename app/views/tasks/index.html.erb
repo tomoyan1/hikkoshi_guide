@@ -14,9 +14,20 @@
   〒<%= current_user.old_zipcode %></div>
   <div class = "home-address">
   住所：<%= current_user.old_address %> 
-  </div></div>
+  </div>
+  <div class="home-address_copy"><button class= "address-copy-button" data-address="<%= current_user.old_address %>">
+    住所をコピーする
+    </button>
+  </div>
+  </div>
   <div class = "add-task">
-  <%= link_to '旧居のタスクを追加', new_task_path(task_type: 0) %>  <br> <br> 
+  <%= link_to 'タスクをまとめて追加する', select_template_tasks_path, class: "btn-template" %>
+  </div>
+  <div class = "add-task">
+  <%= link_to '旧居のタスクを追加', new_task_path(task_type: 0) %> 
+  </div> 
+  
+  <br> 
   </div>
 </div>
 <%= render partial: "out", locals: {task: @tasks} %>
@@ -39,9 +50,15 @@
   </div>
   <div class = "home-address">
   住所：<%= current_user.new_address %>
-  </div></div>
+  </div>
+    <div class="home-address_copy"><button class= "address-copy-button" data-address="<%= current_user.new_address %>">
+    住所をコピーする
+    </button>
+  </div>
+  </div>
   <div class = "add-task">
-  <%= link_to '新居のタスクを追加', new_task_path(task_type: 1) %>
+  <%= link_to '新居のタスクを追加', new_task_path(task_type: 1) %><br><br>
+   
   </div> </div> 
   <%= render partial: "in", locals: {task: @tasks} %>
 </div>

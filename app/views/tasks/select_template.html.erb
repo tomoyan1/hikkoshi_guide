@@ -1,0 +1,36 @@
+<div class="template-container">
+  <h2>追加するタスクを選択</h2>
+  <p>必要なタスクにチェックを入れたまま、追加ボタンを押してください。</p>
+
+  <%= form_with url: bulk_create_tasks_path, method: :post, local: true do |f| %>
+    
+    <h3>旧居の必須手続き</h3>
+    <div class="card-grid">
+      <% @old_tasks.each do |task| %>
+        <label class="task-select-card">
+          <%= check_box_tag "task_ids[]", task[:id], false %>
+          <div class="card-content">
+            <span class="task-name"><%= task[:name] %></span>
+            <span class="task-timing">引越しの <%= task[:days_offset].abs %> 日前</span>
+          </div>
+        </label>
+      <% end %>
+    </div>
+
+    <h3>新居の必須手続き</h3>
+    <div class="card-grid">
+      <% @new_tasks.each do |task| %>
+        <label class="task-select-card">
+          <%= check_box_tag "task_ids[]", task[:id], false %>
+          <div class="card-content">
+            <span class="task-name"><%= task[:name] %></span>
+          </div>
+        </label>
+      <% end %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "選択したタスクを追加する", class: "btn-primary" %>
+    </div>
+  <% end %>
+</div>

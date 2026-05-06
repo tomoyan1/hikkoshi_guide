@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: hikkoshi_guide_production
-  username: hikkoshi_guide
-  password: <%= ENV["HIKKOSHI_GUIDE_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV.fetch("DATABASE_URL", "") %>
