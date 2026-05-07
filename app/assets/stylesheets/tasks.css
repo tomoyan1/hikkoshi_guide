@@ -1,0 +1,145 @@
+.home-status_orange {
+  background-color: rgba(255, 166, 0, 0.76);
+  display: flex;
+}
+
+.home-status_blue {
+  background-color: rgba(1, 170, 170, 0.65);
+  display: flex;
+}
+
+.task-type {
+  font-size: 24px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.status-date {
+  width: 20%;
+  font-size: 18px;
+  padding: 15px;
+}
+
+.address {
+  width: 40%;
+  padding: 10px;
+}
+
+.post-address {
+  font-size: 14px;
+}
+
+.home-address {
+  font-size: 22px;
+}
+
+.add-task {
+  width: 30%;
+  text-align: right;
+  padding-top: 20px;
+
+
+}
+
+.add-task a {
+  font-size: 20px;
+  text-decoration: none;
+  border: solid 3px white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.task-card {
+  height: 380px;
+  width: 380px;
+  border-radius: 10px;
+  margin: 8px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.task-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-card__title {
+  margin-bottom: 0px;
+}
+
+.task-card__status{
+  border: 2px solid black;
+  padding: 4px;
+}
+
+.card-info{
+  flex-grow: 1;
+}
+
+.card-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.task-thumbnail {
+  max-width: 350px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.edit-icon{
+  width:30px;
+}
+
+.task-card-link {
+  display: flex;
+  align-items: end;
+  text-decoration: none;
+  color: black;
+  margin-left: auto;
+}
+
+.category-admin{
+  background-color: azure;
+}
+
+.category-life{
+  background-color: #d4edda;
+}
+
+.category-net{
+  background-color: #d4eced;
+}
+
+.category-contract{
+  background-color: #edd4e9;
+}
+
+.category-living{
+  background-color: #edd4db;
+}
+
+.text-red{
+  color: rgba(255, 0, 0, 0.831);
+  font-weight: 600;
+}
+
+
+
+
+/* Task.show.html */

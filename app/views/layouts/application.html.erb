@@ -11,25 +11,31 @@
   </head>
 
   <body>
-    <header class = "top-header">
-      <nav class="top-nav">
-        <div class="logo">
-          <%= link_to "ホーム", root_path %>
-        <% if user_signed_in? %>
-        <div class="buttons">
+   <header class="top-header">
+  <nav class="top-nav">
+    <div class="logo">
+      <%= link_to "ホーム", root_path %>
+    </div>
+
+    <div class="buttons">
+      <% if user_signed_in? %>
         <%= link_to current_user.name, edit_user_registration_path, class: "user_edit-button"%> 
-  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign_out-button"  %>
-<% else %>
-  <%= link_to '新規登録', new_user_registration_path, class: "sign_up-button" %>
-  <%= link_to 'ログイン', new_user_session_path, class: "sign_in-button"%><br>
-<% end %>
- <% flash.each do |message_type, message| %>
-   <div class = "flash-message <%= message_type%>" >
+        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign-button" %>
+      <% else %>
+        <%= link_to '新規登録', new_user_registration_path, class: "sign-button" %>
+        <%= link_to 'ログイン', new_user_session_path, class: "sign-button"%>
+      <% end %>
+    </div>
+  </nav>
+</header>
+
+<% flash.each do |message_type, message| %>
+  <div class="flash-message <%= message_type%>">
     最新の通知：<%= message%>
   </div>
-  <% end %>
-      </nav>
-    </header>
+<% end %>
+      
+   
     
     <%= yield %>
   </body>

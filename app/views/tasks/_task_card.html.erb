@@ -1,0 +1,42 @@
+<div class="task-card <%= task.category.class_name %>">
+  <div class="card-head">
+      <div class="card-top">
+          <h3 class = "task-card__title"><%= task.name %></h3>
+          <div class="task-card__date <%= 'text-red' if task.urgent? %>">
+            期限：<%= task.due_date %> 
+            <% if task.days_left.present? %>
+              (あと <%= task.days_left %>日)
+            <% end %>
+          </div>
+      </div>
+          <% if task.status.present? %>
+          <div class="task-card__status">
+              <%= task.status.name %>
+          </div>
+          <% end %>
+  </div>
+    <div class="card-info">
+          
+          <%# メモがある時だけ表示 %>
+          <% if task.task_address.present? %>
+            <div class="task-card__memo">
+              <%= auto_link(truncate(task.task_address, length: 50), html: { target: '_blank', rel: 'noopener' }) %>
+            </div>
+          <% end %>
+        </div>
+       <div class="card-bottom">
+        <% if task.image.attached? %>
+          <div class="task-card__img">
+            <% if task.image.content_type.start_with?('image/') %>
+              <%= image_tag task.image, class: "task-thumbnail"%>
+            <% elsif task.image.content_type == 'application/pdf'%>
+              <%= link_to "📄 添付書類(PDF)を見る", task.image, target: "_blank", rel: "noopener" %>
+            <% end %>
+          </div>
+        <% end %>
+        <%= link_to edit_task_path(task), class: "task-card-link" do %>
+        <%= image_tag "Edit_icon.png", class: "edit-icon"%>
+        <% end %>
+       </div>
+        
+      </div>

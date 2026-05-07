@@ -1,4 +1,4 @@
- <%= form_with(model: @task, local: true) do |f| %>
+ <%= form_with(model: @task,id: 'task_form', local: true) do |f| %>
     
     <%= f.hidden_field :task_type %>
   <div class = "form-list">
@@ -20,11 +20,19 @@
        <%= f.label :status, "状態" %> 
       <%= f.collection_select(:status_id, Status.all, :id, :name) %>
     </div>
-    <div class="tasks-field">
+    <div class="field">
+    <% if @task.image.attached? && @task.image.content_type.start_with?('image/') %>
+       <img id="preview" class = "task-thumbnail" src ="<%= url_for(@task.image) %>">
+    <%else%>
+       <img id = "preview" class = "task-thumbnail">
+    <%end%>
       <%= f.label :image, "写真を登録" %> 
-      <%= f.file_field :image %>
+      <%= f.file_field :image, id: 'task_image' %>
+      </div>
   <%= f.submit "変更" %>
 <% end %>
+
 </div>
+<%= link_to '削除', task_path(@task.id), data: {turbo_method: :delete } %>
 
 <%= link_to "戻る", root_path %><br>
