@@ -1,38 +1,64 @@
- <%= form_with(model: @task,id: 'task_form', local: true) do |f| %>
-    
-    <%= f.hidden_field :task_type %>
-  <div class = "form-list">
-    <%= f.label :name, "タイトル" %>
-    <%= f.text_field :name, placeholder: "区役所に転居届を提出する", required: true %>
-  </div>
-    <div class = "form-list">
-    <%= f.label :category_id, "カテゴリ" %>
-    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-  <div class = "form-list">
-    <%= f.label :due_date, "期限(予定日)" %>
-    <%= f.date_field :due_date %>
-  </div>
-    <div class="tasks-field">
-      <%= f.label :task_address, "場所/連絡先など（任意）" %>
-     <%= f.text_area :task_address, placeholder: "例：〇〇区役所/https~~.jp" %>
-    </div>
-    <div class="tasks-field">
-       <%= f.label :status, "状態" %> 
-      <%= f.collection_select(:status_id, Status.all, :id, :name) %>
-    </div>
-    <div class="field">
-    <% if @task.image.attached? && @task.image.content_type.start_with?('image/') %>
-       <img id="preview" class = "task-thumbnail" src ="<%= url_for(@task.image) %>">
-    <%else%>
-       <img id = "preview" class = "task-thumbnail">
-    <%end%>
-      <%= f.label :image, "写真を登録" %> 
-      <%= f.file_field :image, id: 'task_image' %>
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-title">
+      <% if @task.task_type == 0 %>
+        旧居（退去）のタスクを編集
+      <% elsif @task.task_type == 1 %>
+        新居（入居）のタスクを編集
+      <% else %>
+        タスクを編集
+      <% end %>
+    </h2>
+
+    <%= form_with(model: @task, id: 'task_form', local: true) do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+      <%= f.hidden_field :task_type %>
+
+      <div class="form-list">
+        <%= f.label :name, "タイトル" %>
+        <%= f.text_field :name, placeholder: "区役所に転居届を提出する", required: true %>
       </div>
-  <%= f.submit "変更" %>
-<% end %>
 
+      <div class="form-list">
+        <%= f.label :category_id, "カテゴリ" %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+      </div>
+
+      <div class="form-list">
+        <%= f.label :due_date, "期限(予定日)" %>
+        <%= f.date_field :due_date %>
+      </div>
+
+      <div class="form-list">
+        <%= f.label :task_address, "場所/連絡先など（任意）" %>
+        <%= f.text_area :task_address, placeholder: "例：〇〇区役所/https~~.jp" %>
+      </div>
+
+      <div class="form-list">
+        <%= f.label :status, "状態" %>
+        <%= f.collection_select(:status_id, Status.all, :id, :name) %>
+      </div>
+
+      <div class="form-list image-field">
+        <%= f.label :image, "写真を登録" %>
+        <div class="image-input-group">
+          <% if @task.image.attached? && @task.image.content_type.start_with?('image/') %>
+            <img id="preview" class="task-thumbnail" src="<%= url_for(@task.image) %>">
+          <% else %>
+            <img id="preview" class="task-thumbnail">
+          <% end %>
+          <%= f.file_field :image, id: 'task_image' %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "変更", class: "submit-button" %>
+      </div>
+    <% end %>
+
+    <div class="form-links">
+      <%= link_to '削除', task_path(@task.id), data: { turbo_method: :delete } %>
+      <%= link_to "戻る", root_path %>
+    </div>
+  </div>
 </div>
-<%= link_to '削除', task_path(@task.id), data: {turbo_method: :delete } %>
-
-<%= link_to "戻る", root_path %><br>

@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :sns_credentials
 
+  validates :new_zipcode, format: { with: /\A\d{3}-\d{4}\z/ }, allow_blank: true
+  validates :old_zipcode, format: { with: /\A\d{3}-\d{4}\z/ }, allow_blank: true
+
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
     user = User.where(email: auth.info.email).first_or_initialize(
