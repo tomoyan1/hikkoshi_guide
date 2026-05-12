@@ -3,26 +3,31 @@
     <div class="home-status_blue">
       <div class="task-type">旧居</div>
       
-      <div class="status-date">
-        <div class="move-in--date">退去日：<%= current_user.move_out_date %></div>
-        <% if current_user.move_out_date.present? %>
-          <div class="date-countdown">（退去まであと：<%= (current_user.move_out_date - Date.current).to_i %>日）</div>
-        <% end %>
-      </div> 
+      <div class="home-status-content">
+        <div class="status-date">
+          <div class="move-in--date">退去日：<%= current_user.move_out_date %></div>
+          <% if current_user.move_out_date.present? %>
+            <div class="date-countdown">（退去まであと：<%= (current_user.move_out_date - Date.current).to_i %>日）</div>
+          <% end %>
+        </div>
 
-      <div class="address">
-        <div class="post-address">〒<%= current_user.old_zipcode %></div>
-        <div class="home-address">住所：<%= current_user.old_address %></div>
-        <div class="home-address_copy">
-          <button class="address-copy-button" data-address="<%= current_user.old_address %>">住所をコピーする</button>
+        <div class="address">
+          <div class="post-address">〒<%= current_user.old_zipcode %></div>
+          <div class="home-address">住所：<%= current_user.old_address %></div>
+          <div class="home-address_copy">
+            <button class="address-copy-button" data-address="<%= current_user.old_address %>">住所をコピーする</button>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <div class="add-task">
+            <%= link_to '旧居のタスクを追加', new_task_path(task_type: 0) %>
+          </div>
         </div>
       </div>
 
-      <div class="add-task">
+      <div class="add-task add-task-template">
         <%= link_to 'タスクをまとめて追加する', select_template_tasks_path, class: "btn-template" %>
-      </div>
-      <div class="add-task">
-        <%= link_to '旧居のタスクを追加', new_task_path(task_type: 0) %> 
       </div> 
     </div>
   </div>
@@ -32,23 +37,27 @@
     <div class="home-status_orange">
       <div class="task-type">新居</div>
       
-      <div class="status-date">
-        <div class="move-in--date">入居日：<%= current_user.move_in_date %></div>
-        <% if current_user.move_in_date.present? %>
-          <div class="date-countdown">（入居まであと：<%= (current_user.move_in_date - Date.current).to_i %>日）</div>
-        <% end %>
-      </div>
-
-      <div class="address">
-        <div class="post-address">〒 <%= current_user.new_zipcode %></div>
-        <div class="home-address">住所：<%= current_user.new_address %></div>
-        <div class="home-address_copy">
-          <button class="address-copy-button" data-address="<%= current_user.new_address %>">住所をコピーする</button>
+      <div class="home-status-content">
+        <div class="status-date">
+          <div class="move-in--date">入居日：<%= current_user.move_in_date %></div>
+          <% if current_user.move_in_date.present? %>
+            <div class="date-countdown">（入居まであと：<%= (current_user.move_in_date - Date.current).to_i %>日）</div>
+          <% end %>
         </div>
-      </div>
 
-      <div class="add-task">
-        <%= link_to '新居のタスクを追加', new_task_path(task_type: 1) %>
+        <div class="address">
+          <div class="post-address">〒 <%= current_user.new_zipcode %></div>
+          <div class="home-address">住所：<%= current_user.new_address %></div>
+          <div class="home-address_copy">
+            <button class="address-copy-button" data-address="<%= current_user.new_address %>">住所をコピーする</button>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <div class="add-task">
+            <%= link_to '新居のタスクを追加', new_task_path(task_type: 1) %>
+          </div>
+        </div>
       </div> 
     </div> 
     <%= render partial: "in", locals: {task: @tasks} %>

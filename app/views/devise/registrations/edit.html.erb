@@ -12,7 +12,7 @@
 
   <div class="devise-field">
     <p><%= f.label :old_zipcode, "旧居の郵便番号(退去する家)" %></p>
-    <p><%= f.text_field :old_zipcode,class: "devise-input", placeholder: "例: 123-4567" %></p>
+    <p><%= f.text_field :old_zipcode,class: "devise-input", placeholder: "例: 123-4567(ハイフン含む)" %></p>
 
   <div class="devise-field">
     <p><%= f.label :old_address, "旧居の住所（退去する家）" %></p>
@@ -21,7 +21,7 @@
 
   <div class="devise-field">
     <p><%= f.label :new_zipcode, "新居の郵便番号（入居する家）" %></p>
-    <p><%= f.text_field :new_zipcode, class: "devise-input",placeholder: "例: 123-4567" %></p>
+    <p><%= f.text_field :new_zipcode, class: "devise-input",placeholder: "例: 123-4567(ハイフン含む)" %></p>
   </div>
 
   <div class="devise-field">

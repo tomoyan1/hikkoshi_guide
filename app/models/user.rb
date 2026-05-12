@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :tasks, dependent: :destroy
   has_many :sns_credentials
-
+  
+  validates :name, presence: true
   validates :new_zipcode, format: { with: /\A\d{3}-\d{4}\z/ }, allow_blank: true
   validates :old_zipcode, format: { with: /\A\d{3}-\d{4}\z/ }, allow_blank: true
 
