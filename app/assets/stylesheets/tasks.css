@@ -39,17 +39,23 @@
 
 .home-status-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.status-date,
-.address {
+.status-date {
   min-width: 180px;
   max-width: 320px;
   width: min(100%, 320px);
+  font-size: 16px;
+  padding: 0;
+  color: white;
+  flex-shrink: 0;
+}
+
+.address-header {
   font-size: 16px;
   padding: 0;
   color: white;
@@ -73,8 +79,8 @@
 }
 
 .address {
-  max-width: 500px;
-  width: min(100%, 500px);
+  flex: 1;
+  min-width: 0;
   padding: 0;
   color: white;
   display: flex;
@@ -97,6 +103,7 @@
 .button-group {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .add-task {
@@ -578,7 +585,7 @@
   .home-status_orange,
   .home-status_blue {
     padding: 20px;
-    gap: 12px;
+
   }
   
   .add-task a {

@@ -1,10 +1,11 @@
 <% if user_signed_in? %>
   <div class="move-out">
     <div class="home-status_blue">
-      <div class="task-type">旧居</div>
+      
       
       <div class="home-status-content">
         <div class="status-date">
+          <div class="task-type">旧居</div>
           <div class="move-in--date">退去日：<%= current_user.move_out_date %></div>
           <% if current_user.move_out_date.present? %>
             <div class="date-countdown">（退去まであと：<%= (current_user.move_out_date - Date.current).to_i %>日）</div>
@@ -35,10 +36,11 @@
 
   <div class="move-in">
     <div class="home-status_orange">
-      <div class="task-type">新居</div>
+      
       
       <div class="home-status-content">
         <div class="status-date">
+          <div class="task-type">新居</div>
           <div class="move-in--date">入居日：<%= current_user.move_in_date %></div>
           <% if current_user.move_in_date.present? %>
             <div class="date-countdown">（入居まであと：<%= (current_user.move_in_date - Date.current).to_i %>日）</div>
