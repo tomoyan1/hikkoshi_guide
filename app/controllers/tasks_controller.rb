@@ -50,28 +50,39 @@ class TasksController < ApplicationController
   end
 
   def bulk_create
-    selected_ids = params[:task_ids] ||[]
+    selected_ids = Array(params[:task_ids]).map(&:to_i).uniq
+    created_count = 0
+    failed_templates = []
 
     selected_ids.each do |id|
-      template = TaskTemplate::REQUIRED_TASKS.find { |t| t[:id] == id.to_i }
+      template = TaskTemplate::REQUIRED_TASKS.find { |t| t[:id] == id }
       next unless template
 
-      if template[:type] == 0
-        base_date = current_user.move_out_date
-      else
-        base_date = current_user.move_in_date
-      end
+      base_date = template[:type] == 0 ? current_user.move_out_date : current_user.move_in_date
       next unless base_date
 
-      current_user.tasks.create!(
+      task = current_user.tasks.build(
         name: template[:name],
         due_date: base_date + template[:days_offset].days,
         status_id: template[:status_id],
         task_type: template[:type],
         category_id: template[:category_id]
       )
+
+      if task.save
+        created_count += 1
+      else
+        failed_templates << template[:name]
+      end
     end
-    redirect_to root_path, notice: '選択したタスクを追加しました。'
+
+    if created_count.positive?
+      notice = "#{created_count}件のタスクを追加しました。"
+      notice += " #{failed_templates.size}件は日付が無効なため追加できませんでした。" if failed_templates.any?
+      redirect_to root_path, notice: notice
+    else
+      redirect_to select_template_tasks_path, alert: 'タスクを追加できませんでした。日付や選択項目を確認してください。'
+    end
   end
 
   private
