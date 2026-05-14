@@ -37,8 +37,8 @@ https://hikkoshi-guide.onrender.com
 [![URL自動リンク化](https://i.gyazo.com/f6a18bc4ff6324540c7f11c5af7e3d5a.png)](https://gyazo.com/f6a18bc4ff6324540c7f11c5af7e3d5a)
 
 ### コピーボタン
-カスタムデータ属性(`data-address`)と`navigator.clipboard.writeText`を活用し、住所等の文字情報をワンクリックでクリップボードにコピーできます。
-
+カスタムデータ属性(`data-address`)と`navigator.clipboard.writeText`を活用し、住所等の文字情報をワンクリックでクリップボードにコピーできます。コピー完了時にはボタンのテキストが動的に変化し、ユーザーへ完了を通知します。  
+[![コピーボタン](https://i.gyazo.com/a37846b847e273465e11c043c95fddb8.gif)](https://gyazo.com/a37846b847e273465e11c043c95fddb8)
 
 ### カテゴリーごとの色変更
 ActiveHashで定義したクラス名(`class_name`)をビューの要素に動的に付与し、カテゴリーごとに背景色や枠線を自動で変更します。  
