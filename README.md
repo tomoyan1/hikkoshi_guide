@@ -45,8 +45,8 @@ ActiveHashで定義したクラス名(`class_name`)をビューの要素に動�
 [![カテゴリー色変更](https://i.gyazo.com/8b6918d929354c751f66bb27803364a7.png)](https://gyazo.com/8b6918d929354c751f66bb27803364a7)
 
 ### 画像プレビュー
-JavaScriptの`change`イベントを利用し、フォームで画像を選択した瞬間にURLを取得してプレビュー枠に表示させます。  
-[![画像プレビュー](https://i.gyazo.com/ec5f8eec87c8e3668a81c79ce935dd67.gif)](https://gyazo.com/ec5f8eec87c8e3668a81c79ce935dd67)
+JavaScriptの`change`イベントを利用し、フォームで画像を選択した瞬間にURLを取得してプレビュー枠に表示させます。アップロード前に実際の画像を確認できるため、添付ミスを未然に防ぎます。  
+[![画像プレビュー](https://i.gyazo.com/9f5cc17ade67cf985cbd17884ce03520.gif)](https://gyazo.com/9f5cc17ade67cf985cbd17884ce03520)
 
 ## 実装予定の機能
 - ユーザー属性（単身・家族・車保有など）に応じたタスクの条件分岐と出し分け機能
