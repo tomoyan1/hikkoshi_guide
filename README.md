@@ -1,24 +1,77 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション名
+HikkoshiGuide（引越しガイドブック）
 
-Things you may want to cover:
+## アプリケーション概要
+退去予定日と入居予定日を入力するだけで、役所の手続きからライフライン、荷造り、買い物まで、引越しに必要なタスクを最適な期日と共に生成し、進捗を管理できるアプリケーションです。
 
-* Ruby version
+## URL
+https://hikkoshi-guide.onrender.com
 
-* System dependencies
+## テスト用アカウント
+- **Basic認証ID**: huzi
+- **Basic認証パスワード**: 0705
+- **メールアドレス**: 
+- **パスワード**: 
 
-* Configuration
+## 利用方法
+1. トップページからユーザーの新規登録（またはログイン）を行います。
+2. 初回登録時、旧居の退去予定日と新居の入居予定日を入力します。
+3. 一斉追加ボタン、または新居/旧居のタスクを追加ボタンよりタスク追加ができます。
+4. 追加した各タスクの詳細画面から、メモの追加や関連画像の保存、進捗状況（未着手・完了など）の更新を行います。
+5. マイページにて、新旧の住所や郵便番号を管理し、コピーボタンを利用して外部手続きをスムーズに行います。
 
-* Database creation
+## アプリケーションを作成した背景
+引越しの準備において、役所・インフラ・各種契約変更など手続き先がバラバラであり「いつ・何を」すべきか管理が困難な現状があります。
+このタスクの分散やスケジュールの不明確さから生じる抜け漏れを防ぎ、スムーズに新生活を始められる一元管理ツールが必要だと考え、本アプリケーションを開発しました。
 
-* Database initialization
+## 実装した機能についての画像や動画およびその説明
 
-* How to run the test suite
+### タスクの一括追加機能
+ユーザーの引越し予定日に合わせ、Templateモデルに設定されたデフォルトデータを元に配列を生成し、必要なタスクを一括で保存します。  
+[![タスク一括追加](https://i.gyazo.com/bb3bf5480828b155663490d1116be611.gif)](https://gyazo.com/bb3bf5480828b155663490d1116be611)
 
-* Services (job queues, cache servers, search engines, etc.)
+### URLの自動リンク化
+タスクのメモ欄などに記載されたURLテキストを、`rails_autolink`を用いて自動的にクリック可能なリンクへ変換します。  
+[![URL自動リンク化](https://i.gyazo.com/f6a18bc4ff6324540c7f11c5af7e3d5a.png)](https://gyazo.com/f6a18bc4ff6324540c7f11c5af7e3d5a)
 
-* Deployment instructions
+### コピーボタン
+カスタムデータ属性(`data-address`)と`navigator.clipboard.writeText`を活用し、住所等の文字情報をワンクリックでクリップボードにコピーできます。
 
-* ...
+
+### カテゴリーごとの色変更
+ActiveHashで定義したクラス名(`class_name`)をビューの要素に動的に付与し、カテゴリーごとに背景色や枠線を自動で変更します。  
+[![カテゴリー色変更](https://i.gyazo.com/8b6918d929354c751f66bb27803364a7.png)](https://gyazo.com/8b6918d929354c751f66bb27803364a7)
+
+### 画像プレビュー
+JavaScriptの`change`イベントを利用し、フォームで画像を選択した瞬間にURLを取得してプレビュー枠に表示させます。  
+[![画像プレビュー](https://i.gyazo.com/ec5f8eec87c8e3668a81c79ce935dd67.gif)](https://gyazo.com/ec5f8eec87c8e3668a81c79ce935dd67)
+
+## 実装予定の機能
+- ユーザー属性（単身・家族・車保有など）に応じたタスクの条件分岐と出し分け機能
+- スマートフォンでの閲覧・操作に最適化したレスポンシブデザインの完成
+- 引越しにかかる費用の概算計算・予算管理機能
+
+## データベース設計
+
+
+## 画面遷移図
+
+
+## 開発環境
+- **バックエンド**: Ruby 3.2.x / Ruby on Rails 7.0.x
+- **フロントエンド**: HTML / CSS (BEM記法) / JavaScript
+- **データベース**: PostgreSQL
+- **その他**: Devise / ActiveHash / ActiveStorage / GitHub / Render (デプロイ環境)
+
+## ローカルでの動作方法
+以下のコマンドを順に実行してください。
+
+```bash
+% git clone [https://github.com/ユーザー名/hikkoshi_guide.git](https://github.com/ユーザー名/hikkoshi_guide.git)
+% cd hikkoshi_guide
+% bundle install
+% rails db:create
+% rails db:migrate
+% rails s
