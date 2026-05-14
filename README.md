@@ -54,10 +54,10 @@ JavaScriptの`change`イベントを利用し、フォームで画像を選択�
 - 引越しにかかる費用の概算計算・予算管理機能
 
 ## データベース設計
-
+![ER図](https://i.gyazo.com/505387306660e90e5228a71accfb9586.png)
 
 ## 画面遷移図
-
+![画面遷移図](https://i.gyazo.com/446569db8deac7cc1e74445f5559ed75.png)
 
 ## 開発環境
 - **バックエンド**: Ruby 3.2.x / Ruby on Rails 7.0.x
