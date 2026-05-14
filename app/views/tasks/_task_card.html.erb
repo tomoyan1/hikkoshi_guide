@@ -1,4 +1,4 @@
-<div class="task-card <%= task.category.class_name %>">
+<div class="task-card <%= task.category&.class_name || 'category-default' %>">
   <div class="card-head">
       <div class="card-top">
           <h3 class = "task-card__title"><%= task.name %></h3>
