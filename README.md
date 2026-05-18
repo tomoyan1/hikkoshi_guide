@@ -6,6 +6,12 @@ HikkoshiGuide（引越しガイドブック）
 ## アプリケーション概要
 退去予定日と入居予定日を入力するだけで、役所の手続きからライフライン、荷造り、買い物まで、引越しに必要なタスクを最適な期日と共に生成し、進捗を管理できるアプリケーションです。
 
+## スライド資料
+https://gyazo.com/9476633ef10a2778dd189a629feba0ce
+https://gyazo.com/c3aa1a89a3d09c98eedc7f1cdeea164a
+https://gyazo.com/c3aa1a89a3d09c98eedc7f1cdeea164a
+https://gyazo.com/510cb54bb5a7edb15f4f91c88c036d6e
+
 ## URL
 https://hikkoshi-guide.onrender.com
 
