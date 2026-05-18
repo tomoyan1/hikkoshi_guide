@@ -6,14 +6,20 @@ HikkoshiGuide（引越しガイドブック）
 ## アプリケーション概要
 退去予定日と入居予定日を入力するだけで、役所の手続きからライフライン、荷造り、買い物まで、引越しに必要なタスクを最適な期日と共に生成し、進捗を管理できるアプリケーションです。
 
+## スライド資料
+https://gyazo.com/9476633ef10a2778dd189a629feba0ce
+https://gyazo.com/c3aa1a89a3d09c98eedc7f1cdeea164a
+https://gyazo.com/c3aa1a89a3d09c98eedc7f1cdeea164a
+https://gyazo.com/510cb54bb5a7edb15f4f91c88c036d6e
+
 ## URL
 https://hikkoshi-guide.onrender.com
 
 ## テスト用アカウント
 - **Basic認証ID**: huzi
 - **Basic認証パスワード**: 0705
-- **メールアドレス**: 
-- **パスワード**: 
+- **メールアドレス**: test@gmail.com
+- **パスワード**:test1111
 
 ## 利用方法
 1. トップページからユーザーの新規登録（またはログイン）を行います。
@@ -37,16 +43,16 @@ https://hikkoshi-guide.onrender.com
 [![URL自動リンク化](https://i.gyazo.com/f6a18bc4ff6324540c7f11c5af7e3d5a.png)](https://gyazo.com/f6a18bc4ff6324540c7f11c5af7e3d5a)
 
 ### コピーボタン
-カスタムデータ属性(`data-address`)と`navigator.clipboard.writeText`を活用し、住所等の文字情報をワンクリックでクリップボードにコピーできます。
-
+カスタムデータ属性(`data-address`)と`navigator.clipboard.writeText`を活用し、住所等の文字情報をワンクリックでクリップボードにコピーできます。コピー完了時にはボタンのテキストが動的に変化し、ユーザーへ完了を通知します。  
+[![コピーボタン](https://i.gyazo.com/a37846b847e273465e11c043c95fddb8.gif)](https://gyazo.com/a37846b847e273465e11c043c95fddb8)
 
 ### カテゴリーごとの色変更
 ActiveHashで定義したクラス名(`class_name`)をビューの要素に動的に付与し、カテゴリーごとに背景色や枠線を自動で変更します。  
 [![カテゴリー色変更](https://i.gyazo.com/8b6918d929354c751f66bb27803364a7.png)](https://gyazo.com/8b6918d929354c751f66bb27803364a7)
 
 ### 画像プレビュー
-JavaScriptの`change`イベントを利用し、フォームで画像を選択した瞬間にURLを取得してプレビュー枠に表示させます。  
-[![画像プレビュー](https://i.gyazo.com/ec5f8eec87c8e3668a81c79ce935dd67.gif)](https://gyazo.com/ec5f8eec87c8e3668a81c79ce935dd67)
+JavaScriptの`change`イベントを利用し、フォームで画像を選択した瞬間にURLを取得してプレビュー枠に表示させます。アップロード前に実際の画像を確認できるため、添付ミスを未然に防ぎます。  
+[![画像プレビュー](https://i.gyazo.com/9f5cc17ade67cf985cbd17884ce03520.gif)](https://gyazo.com/9f5cc17ade67cf985cbd17884ce03520)
 
 ## 実装予定の機能
 - ユーザー属性（単身・家族・車保有など）に応じたタスクの条件分岐と出し分け機能
@@ -54,10 +60,10 @@ JavaScriptの`change`イベントを利用し、フォームで画像を選択�
 - 引越しにかかる費用の概算計算・予算管理機能
 
 ## データベース設計
-
+![ER図](https://i.gyazo.com/505387306660e90e5228a71accfb9586.png)
 
 ## 画面遷移図
-
+![画面遷移図](https://i.gyazo.com/446569db8deac7cc1e74445f5559ed75.png)
 
 ## 開発環境
 - **バックエンド**: Ruby 3.2.x / Ruby on Rails 7.0.x
