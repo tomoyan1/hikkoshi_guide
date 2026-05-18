@@ -214,6 +214,8 @@
 .task-card__status{
   border: 2px solid black;
   padding: 4px;
+  width:80px;
+  text-align: center;
 }
 
 .card-info{

@@ -22,7 +22,11 @@
 
         <div class="button-group">
           <div class="add-task">
-            <%= link_to '旧居のタスクを追加', new_task_path(task_type: 0) %>
+            <%= link_to new_task_path(task_type: 0) do %>
+            <%= image_tag 'plus.png', size: "20x20" %>
+            旧居のタスクを追加
+            <% end %>
+            
           </div>
         </div>
       </div>
@@ -57,7 +61,11 @@
 
         <div class="button-group">
           <div class="add-task">
-            <%= link_to '新居のタスクを追加', new_task_path(task_type: 1) %>
+            
+            <%= link_to new_task_path(task_type: 1) do%>
+              <%= image_tag 'plus.png', size: "20x20" %>
+              新居のタスクを追加
+            <% end %>
           </div>
         </div>
       </div> 
