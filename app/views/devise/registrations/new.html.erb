@@ -65,8 +65,11 @@
         <%= f.submit "新規登録", class: "devise-submit" %>
       </div>
       <div class="other-actions">
-      <%= button_to "Googleで登録", user_google_oauth2_omniauth_authorize_path,class: "google-submit", data: { turbo: false } %>
-      <%= render "devise/shared/links" %>
+      <div class="other-actions">
+  <%= button_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, class: "google-submit", data: { turbo: false } %>
+  <%= button_to "LINEで登録", user_line_omniauth_authorize_path, class: "line-submit", data: { turbo: false } %>
+  
+  <%= render "devise/shared/links" %>
     <% end %>
       </div>
    
